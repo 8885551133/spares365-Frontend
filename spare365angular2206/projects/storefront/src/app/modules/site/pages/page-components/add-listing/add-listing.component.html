@@ -1,0 +1,278 @@
+<div class="col-md-6 d-flex mt-4 mt-md-0 align">
+    <div class="card flex-grow-1 mb-0 ml-0 ml-lg-3 mr-0 mr-lg-4">
+        <div class="card-body card-body--padding--2">
+            <h3 class="card-title" style="text-align:center;vertical-align: middle;">Add Listing Product items</h3>
+            <form [formGroup]="addListingForm">
+                <div *ngIf="addListingForm.errors?.server" class="alert alert-sm alert-danger">
+                    {{ addListingForm.errors.server|translate }}
+                </div>
+
+                <!-- TODO -->
+                <!-- <div class="form-group">
+                    <label for="productid">Product ID</label>
+                    <input id="productid" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addlisting.controls.productid|isInvalid" 
+                    placeholder="Product ID"
+                    formControlName="productid" 
+                    name="productid" [(ngModel)]="addproduct.id"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addlisting.controls.productid|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input id="productName" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.productName|isInvalid" 
+                    placeholder="Product Name"
+                    formControlName="productName" 
+                    name="productName" [(ngModel)]="addproduct.name"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.productName|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                        <div *ngIf="addListingForm.controls.productName|hasError:'maxlength'">
+                            Product Name must be less than 255 characters.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Product Price</label>
+                    <input id="productPrice" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.productPrice|isInvalid" 
+                    placeholder="Product Price"
+                    formControlName="productPrice" 
+                    name="productPrice" 
+                    [(ngModel)]="addproduct.price"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.productPrice|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                        <div *ngIf="addListingForm.controls.productPrice|hasError:'pattern'">
+                            Enter only numbers.
+                        </div>
+                        <div *ngIf="addListingForm.controls.productPrice|hasError:'maxlength'">
+                            Product Price must be less than 255 characters.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="productQuantity">Number of Products</label>
+                    <input id="productQuantity" 
+                    type="number" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.productQuantity|isInvalid" 
+                    placeholder="Product Quantity"
+                    formControlName="productQuantity" 
+                    name="productQuantity" [(ngModel)]="addproduct.quantity"
+                    min="0"
+                    oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.productQuantity|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                        <div *ngIf="addListingForm.controls.productQuantity|hasError:'maxlength'">
+                            Product Quantity must be less than 255 characters.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="productDescription">Product Description</label>
+                    <input id="productDescription" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.productDescription|isInvalid"
+                    placeholder="Product Description" 
+                    formControlName="productDescription" 
+                    name="productDescription" [(ngModel)]="addproduct.description"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.productDescription|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="modelnumber">Model Number</label>
+                    <input id="modelnumber" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.modelnumber|isInvalid"
+                    placeholder="Model Number" 
+                    formControlName="modelnumber" 
+                    name="modelnumber" [(ngModel)]="addproduct.modelnumber"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.modelnumber|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                        <div *ngIf="addListingForm.controls.modelnumber|hasError:'pattern'">
+                            Enter only numbers.
+                        </div>
+                        <div *ngIf="addListingForm.controls.modelnumber|hasError:'maxlength'">
+                            Model Number must be less than 255 characters.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="productCategory">Product Category</label>
+                    <input id="productCategory" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.productCategory|isInvalid"
+                    placeholder="Product Category" 
+                    formControlName="productCategory" 
+                    name="productCategory" [(ngModel)]="addproduct.category"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.productCategory|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                        <div *ngIf="addListingForm.controls.productCategory|hasError:'maxlength'">
+                            Product Category must be less than 255 characters.
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <label for="year">Year Of Manufacture</label>
+                    <input id="year" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="addListingForm.controls.year|isInvalid" 
+                    placeholder="Year Of Manufacture"
+                    formControlName="year" 
+                    name="year" [(ngModel)]="addproduct.year"
+                    >
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.year|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                        <div *ngIf="addListingForm.controls.year|hasError:'pattern'">
+                            Enter only numbers.
+                        </div>
+                        <div *ngIf="addListingForm.controls.year|hasError:'max'">
+                            Year can't be greater than the current year.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="img">Select Image:</label>
+                    <input id="img" 
+                    type="file"
+                    class="form-control"
+                    [class.is-invalid]="addlisting.controls.img|isInvalid"
+                    accept="image/*"
+                    name="img" 
+                    >
+                </div> -->
+                <!-- <div class="text-center"> 
+                    <input class="form-control" type="file" 
+                            (change)="onChange($event)"> 
+                  
+                    <button (click)="onUpload()"  
+                        class="btn btn-success"> 
+                        Upload 
+                    </button> 
+                </div>  -->
+                  
+                <!-- Shareable short link of  uoloaded file -->
+                <!-- <div class="container text-center jumbotron"
+                    *ngIf="shortLink">  -->
+                     <!-- <h2> Visit Here</h2> 
+                    <a href="{{shortLink}}">{{shortLink}}</a>  -->
+
+                  
+                <!--Flag variable is used here-->
+                <!-- <div class="container" *ngIf="loading"> 
+                    <h3>Loading ...</h3> 
+                </div>  -->
+                  
+                <label class="btn btn-default">
+                    <input
+                    id="productImage"
+                    class="form-control"
+                    placeholder="Product Image" 
+                    formControlName="productImage" 
+                    type="file"
+                    accept="image/x-png,image/jpeg"
+                    (change)="selectFile($event)"
+                    data-max-size="32154"
+                    #imageInput
+                    />
+                    <div class="invalid-feedback">
+                        <div *ngIf="addListingForm.controls.productImage|hasError:'required'">
+                            {{ 'ERROR_FORM_REQUIRED'|translate }}
+                        </div>
+                    </div>
+                </label>
+                
+                <!-- <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+                Upload
+                </button> -->
+
+                <img src="{{addproduct.image}}">
+                
+                <!-- <div class="card">
+                <div class="card-header">List of Files</div>
+                <ul
+                    class="list-group list-group-flush"
+                    *ngFor="let file of fileInfos | async"
+                >
+                    <li class="list-group-item">
+                    <a href="{{ file.url }}">{{ file.name }}</a>
+                    <img src="{{file.url}}">
+                    </li>
+                </ul>
+                </div> -->
+                <div class="form-group mb-0">
+                    <button class="btn btn-primary"
+                        [disabled]="addListingForm.controls[ 'productName' && 'productPrice' && 'productQuantity' && 'productDescription' && 'modelnumber' && 'productCategory' && 'year' && 'productImage'].invalid"
+                        (click)="addListing()">Add</button>
+                </div>
+                {{Msg}}
+            </form>
+<!-- 
+            {{productsRetrieved[0].name}}
+            <img src={{productsRetrieved[0].image}}> -->
+            
+            <br>
+            <br>
+            <!-- <div *ngIf="commonService.products">
+                <h1>Products Stored:</h1>
+                <div *ngFor="let product of commonService.products">
+                    <h6>{{product.name}}</h6>
+                    <img src={{product.image}}>
+                    <br>
+                    <a>{{product.description}}</a>
+                    <br>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

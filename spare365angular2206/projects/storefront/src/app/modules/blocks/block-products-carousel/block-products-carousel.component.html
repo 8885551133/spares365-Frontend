@@ -1,0 +1,166 @@
+<div class="container">
+    <app-section-header [sectionTitle]="blockTitle" [arrows]="true" [groups]="groups" [currentGroup]="currentGroup"
+        [links]="links" (next)="carousel.next()" (prev)="carousel.prev()"
+        (changeGroup)="changeGroup.emit($any($event))"></app-section-header>
+
+    <div *ngIf="showCarousel" class="block-products-carousel__carousel"
+        [class.block-products-carousel__carousel--loading]="loading"
+        [class.block-products-carousel__carousel--has-items]="columns.length > 0">
+        <div class="block-products-carousel__carousel-loader"></div>
+
+        <!--
+        <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+            <ng-template *ngFor="let column of columns" carouselSlide>
+                <div class="block-products-carousel__column">
+                    <app-product-card
+                        *ngFor="let product of column"
+                        class="block-products-carousel__cell"
+                        [product]="product"
+                        [layout]="productCardLayout"
+                        [exclude]="productCardExclude"
+                    ></app-product-card>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+        -->
+
+        <owl-carousel-o [options]="carouselOptions">
+
+            <ng-template carouselSlide *ngFor="let product of product">
+                <!-- <a>{{product.name}}</a>
+                <img [src]="product.image"> -->
+                <div class="owl-item ng-tns-c93-6 ng-trigger ng-trigger-autoHeight active ng-star-inserted" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="width: 250.8px; margin-right: 24px;">
+                    <div _ngcontent-serverapp-c140="" class="block-sale__item ng-star-inserted">        
+                        <div class="product-card">
+                            <div _ngcontent-serverapp-c118="" class="product-card__actions-list">
+                                <button _ngcontent-serverapp-c118="" type="button" class="product-card__action product-card__action--quickview" aria-label="Quick view">
+                                    <app-icon _ngcontent-serverapp-c118="" icon="quickview-16" _nghost-serverapp-c55="" ng-reflect-icon="quickview-16"></app-icon>
+                                </button>
+                                <button _ngcontent-serverapp-c118="" type="button" class="product-card__action product-card__action--wishlist ng-star-inserted" aria-label="Add to wishlist">
+                                    <app-icon _ngcontent-serverapp-c118="" icon="wishlist-16" _nghost-serverapp-c55="" ng-reflect-icon="wishlist-16"></app-icon>
+                                </button>
+                                <button _ngcontent-serverapp-c118="" type="button" class="product-card__action product-card__action--compare ng-star-inserted" aria-label="Add to compare">
+                                    <app-icon _ngcontent-serverapp-c118="" icon="compare-16" _nghost-serverapp-c55="" ng-reflect-icon="compare-16">
+                                        <svg _ngcontent-serverApp-c55="" width="16" height="16" class="ng-star-inserted">
+                                            <path _ngcontent-serverApp-c55="" d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
+                                            <path _ngcontent-serverApp-c55="" d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
+                                            <path _ngcontent-serverApp-c55="" d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
+                                        </svg>
+                                    </app-icon>
+                                </button>
+                            </div>
+                            <div class="product-card__image">
+                                <div _ngcontent-serverapp-c118="" class="image image--type--product">
+                                    <a _ngcontent-serverapp-c118="" class="image__body" ng-reflect-router-link="/shop/products/brandix-manual-" href="/shop/products/brandix-manual-five-speed-gearbox">
+                                        <img _ngcontent-serverapp-c118="" alt="" class="image__tag" [src]="product.image">
+                                    </a>
+                                </div>
+                            </div>
+                            <div _ngcontent-serverapp-c118="" class="product-card__info">
+                                <div _ngcontent-serverapp-c118="" class="product-card__meta ng-star-inserted">
+                                    <span _ngcontent-serverapp-c118="" class="product-card__meta-title">SKU:</span> 855-78336-G 
+                                </div>
+                                <div _ngcontent-serverapp-c118="" class="product-card__name">
+                                    <div _ngcontent-serverapp-c118="">
+                                        <a _ngcontent-serverapp-c118="" ng-reflect-router-link="/shop/products/brandix-manual-" href="/shop/products/brandix-manual-five-speed-gearbox">{{product.name}}</a>
+                                    </div>
+                                </div>
+                                <div _ngcontent-serverapp-c118="" class="product-card__rating">
+                                    <app-rating _ngcontent-serverapp-c118="" class="product-card__rating-stars rating" _nghost-serverapp-c67="" ng-reflect-value="4">
+                                        <div _ngcontent-serverapp-c67="" class="rating__body">
+                                            <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                            <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                            <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                            <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                            <div _ngcontent-serverapp-c67="" class="rating__star ng-star-inserted"></div>
+                                        </div>
+                                    </app-rating>
+                                    <div _ngcontent-serverapp-c118="" class="product-card__rating-label"> 6 reviews </div>
+                                </div>
+                            </div>
+                            <div _ngcontent-serverapp-c118="" class="product-card__footer">
+                                <div _ngcontent-serverapp-c118="" class="product-card__prices">
+                                    <div _ngcontent-serverapp-c118="" class="product-card__price product-card__price--current ng-star-inserted">₹{{product.price}}</div>
+                                </div>
+                                <button _ngcontent-serverapp-c118="" type="button" class="product-card__addtocart-icon ng-star-inserted" aria-label="Add to cart">
+                                    <app-icon _ngcontent-serverapp-c118="" icon="cart-20" _nghost-serverapp-c55="" ng-reflect-icon="cart-20">
+                                        <svg _ngcontent-serverApp-c55="" width="20" height="20" class="ng-star-inserted">
+                                            <circle _ngcontent-serverApp-c55="" cx="7" cy="17" r="2"></circle><circle _ngcontent-serverApp-c55="" cx="15" cy="17" r="2"></circle>
+                                            <path _ngcontent-serverApp-c55="" d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"></path>
+                                        </svg>
+                                    </app-icon>
+                                </button>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+
+    </div>
+
+    <!-- <div class="owl-item ng-tns-c93-6 ng-trigger ng-trigger-autoHeight active ng-star-inserted" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="width: 250.8px; margin-right: 24px;">
+        <div _ngcontent-serverapp-c140="" class="block-sale__item ng-star-inserted">        
+            <div class="product-card">
+                <div _ngcontent-serverapp-c118="" class="product-card__actions-list">
+                    <button _ngcontent-serverapp-c118="" type="button" class="product-card__action product-card__action--quickview" aria-label="Quick view">
+                        <app-icon _ngcontent-serverapp-c118="" icon="quickview-16" _nghost-serverapp-c55="" ng-reflect-icon="quickview-16"></app-icon>
+                    </button>
+                    <button _ngcontent-serverapp-c118="" type="button" class="product-card__action product-card__action--wishlist ng-star-inserted" aria-label="Add to wishlist">
+                        <app-icon _ngcontent-serverapp-c118="" icon="wishlist-16" _nghost-serverapp-c55="" ng-reflect-icon="wishlist-16"></app-icon>
+                    </button>
+                    <button _ngcontent-serverapp-c118="" type="button" class="product-card__action product-card__action--compare ng-star-inserted" aria-label="Add to compare">
+                        <app-icon _ngcontent-serverapp-c118="" icon="compare-16" _nghost-serverapp-c55="" ng-reflect-icon="compare-16">
+                            <svg _ngcontent-serverApp-c55="" width="16" height="16" class="ng-star-inserted">
+                                <path _ngcontent-serverApp-c55="" d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
+                                <path _ngcontent-serverApp-c55="" d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
+                                <path _ngcontent-serverApp-c55="" d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
+                            </svg>
+                        </app-icon>
+                    </button>
+                </div>
+                <div class="product-card__image">
+                    <div _ngcontent-serverapp-c118="" class="image image--type--product">
+                        <a _ngcontent-serverapp-c118="" class="image__body" ng-reflect-router-link="/shop/products/brandix-manual-" href="/shop/products/brandix-manual-five-speed-gearbox">
+                            <img _ngcontent-serverapp-c118="" alt="" class="image__tag" src="assets/images/products/product-9-1.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div _ngcontent-serverapp-c118="" class="product-card__info">
+                    <div _ngcontent-serverapp-c118="" class="product-card__meta ng-star-inserted">
+                        <span _ngcontent-serverapp-c118="" class="product-card__meta-title">SKU:</span> 855-78336-G 
+                    </div>
+                    <div _ngcontent-serverapp-c118="" class="product-card__name">
+                        <div _ngcontent-serverapp-c118="">
+                            <a _ngcontent-serverapp-c118="" ng-reflect-router-link="/shop/products/brandix-manual-" href="/shop/products/brandix-manual-five-speed-gearbox">Brandix Manual Five Speed Gearbox</a>
+                        </div>
+                    </div>
+                    <div _ngcontent-serverapp-c118="" class="product-card__rating">
+                        <app-rating _ngcontent-serverapp-c118="" class="product-card__rating-stars rating" _nghost-serverapp-c67="" ng-reflect-value="4">
+                            <div _ngcontent-serverapp-c67="" class="rating__body">
+                                <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                <div _ngcontent-serverapp-c67="" class="rating__star rating__star--active ng-star-inserted"></div>
+                                <div _ngcontent-serverapp-c67="" class="rating__star ng-star-inserted"></div>
+                            </div>
+                        </app-rating>
+                        <div _ngcontent-serverapp-c118="" class="product-card__rating-label"> 6 reviews </div>
+                    </div>
+                </div>
+                <div _ngcontent-serverapp-c118="" class="product-card__footer">
+                    <div _ngcontent-serverapp-c118="" class="product-card__prices">
+                        <div _ngcontent-serverapp-c118="" class="product-card__price product-card__price--current ng-star-inserted">$879.00</div>
+                    </div>
+                    <button _ngcontent-serverapp-c118="" type="button" class="product-card__addtocart-icon ng-star-inserted" aria-label="Add to cart">
+                        <app-icon _ngcontent-serverapp-c118="" icon="cart-20" _nghost-serverapp-c55="" ng-reflect-icon="cart-20">
+                            <svg _ngcontent-serverApp-c55="" width="20" height="20" class="ng-star-inserted">
+                                <circle _ngcontent-serverApp-c55="" cx="7" cy="17" r="2"></circle><circle _ngcontent-serverApp-c55="" cx="15" cy="17" r="2"></circle>
+                                <path _ngcontent-serverApp-c55="" d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"></path>
+                            </svg>
+                        </app-icon>
+                    </button>
+                </div>        
+            </div>
+        </div>
+    </div> -->

@@ -1,0 +1,89 @@
+<app-block-map></app-block-map>
+
+<app-block-header
+    pageTitle="Contact Us"
+    [breadcrumb]="[
+        {label: 'Home', url: ''},
+        {label: 'Breadcrumb', url: ''},
+        {label: 'Current Page', url: ''}
+    ]"
+    [afterHeader]="false"
+></app-block-header>
+
+<div class="block">
+    <div class="container container--max--lg">
+        <div class="card">
+            <div class="card-body card-body--padding--2">
+                <div class="row">
+                    <div class="col-12 col-lg-6 pb-4 pb-lg-0">
+                        <div class="mr-1">
+                            <h4 class="contact-us__header card-title">Our Address</h4>
+
+                            <div class="contact-us__address">
+                                <p>
+                                    Stigentech IT Services Private Limited.
+									#201,Plot No:78-A, Designer Towers,Shilpa Layout, Mind Space Circle To Ramky Towers Road, Gachibowli, Phase 2, HITEC City, Hyderabad, Telangana 500032<br>
+                                    Email: spares365.stigenetch@gmail.com<br>
+                                    Phone Number: +91 4040122754
+                                </p>
+
+                                <p>
+                                    <strong>Opening Hours</strong><br>
+                                    Monday to Friday: 8am-8pm<br>
+                                    Saturday: 8am-6pm<br>
+                                    Sunday: 10am-4pm
+                                </p>
+
+                                <p>
+
+                                    <strong>Comment</strong><br>
+                                    Spares365 is India's one of the most popular online store which sells genuine
+                                    automobile spare parts and acquired very good reputation in India and also Overseas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="ml-1">
+                            <h4 class="contact-us__header card-title">Leave us a Message</h4>
+
+                            <form [formGroup]="contactForm" (ngSubmit)='contact()'>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="form-name">Your Name</label>
+                                        <input type="text" id="form-name" class="form-control" placeholder="Your Name" formControlName="name"
+                                         name="Name" [(ngModel)]=Name>
+                                        <span class="error" *ngIf="name.invalid && name.touched">Name is required</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="form-email">Email</label>
+                                        <input type="email" id="form-email" class="form-control" placeholder="Email Address" name="Emailid" formControlName="email" 
+                                        [(ngModel)]=Emailid>
+                                         <span class="error" *ngIf="email.invalid && email.touched">Enter valid Email</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-subject">Subject</label>
+                                    <input type="text" id="form-subject" class="form-control" placeholder="Subject" name="subject" formControlName="subject" 
+                                    [(ngModel)]=Subject>
+                                     <span class="error" *ngIf="subject.invalid && subject.touched">subject is required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-message">Message</label>
+                                    <textarea id="form-message" class="form-control" placeholder="min 20 characters" rows="4" name="Message" formControlName="message" 
+                                    [(ngModel)]=Message></textarea>
+                                     <span class="error" *ngIf="message.invalid && message.touched">Message is required</span>
+                                </div>
+                                <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>
